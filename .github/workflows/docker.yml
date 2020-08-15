@@ -6,6 +6,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
+    - name: Download proxysql-admin
+      run: "wget https://raw.githubusercontent.com/percona/proxysql-admin-tool/v2.0/proxysql-admin"
     - name: Publish to Registry
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
