@@ -1,3 +1,2 @@
 FROM percona/percona-xtradb-cluster-operator:1.5.0-proxysql
 COPY proxysql-admin /usr/bin/
-RUN chmod 775 /usr/bin/proxysql-admin
