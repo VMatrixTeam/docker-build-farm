@@ -17,3 +17,26 @@ jobs:
         password: ${{ secrets.DOCKERHUB_TOKEN }}
         cache: false
         dockerfile: "pxc-operator/Dockerfile.proxysql"
+  tkestack-gpu-manager:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+      with:
+        repository: tkestack/gpu-manager
+        ref: 19a87c5b12c4f41e4add16c0f5e426751af4b46a
+    - name: Publish to Registry
+      uses: elgohr/Publish-Docker-Github-Action@master
+      env:
+        version: "1.1.0-matrix"
+        commit: "19a87c5b"
+        base_img: "tkestack/vcuda:1.0.1"
+      with:
+        name: vmatrixdev/gpu-manager
+        tags: "1.1.0-matrix"
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+        cache: false
+        dockerfile: "build/Dockerfile"
+        workdir: "build"
+        buildargs: "version,commit,base_img"
