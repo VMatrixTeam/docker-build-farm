@@ -1,0 +1,19 @@
+name: Build percona/pxc-operator-proxysql
+on: 
+  workflow_dispatch:
+jobs:
+  pxc-operator-proxysql:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Download proxysql-admin
+      run: "wget https://raw.githubusercontent.com/percona/proxysql-admin-tool/v2.0/proxysql-admin && chmod 775 proxysql-admin"
+    - name: Publish to Registry
+      uses: elgohr/Publish-Docker-Github-Action@master
+      with:
+        name: vmatrixdev/percona-xtradb-cluster-operator
+        tags: "1.5.0-proxysql"
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+        cache: false
+        dockerfile: "pxc-operator/Dockerfile.proxysql"
