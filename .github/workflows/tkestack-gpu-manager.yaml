@@ -12,11 +12,11 @@ jobs:
         ref: 19a87c5b12c4f41e4add16c0f5e426751af4b46a
     - name: Prepare
       run: |
-          export ROOT=$(pwd -P) &&
-          source "${ROOT}/hack/common.sh" &&
-          mkdir -p "${ROOT}/go/build" &&
-          tar czf "${ROOT}/go/build/gpu-manager-source.tar.gz" --transform 's,^,/gpu-manager-'${version}'/,' $(plugin::source_targets) &&
-          cp -R "${ROOT}/build/"* "${ROOT}/go/build/"
+        export ROOT=$(pwd -P)
+        source "${ROOT}/hack/common.sh"
+        mkdir -p "${ROOT}/go/build"
+        tar czf "${ROOT}/go/build/gpu-manager-source.tar.gz" --transform 's,^,/gpu-manager-'${version}'/,' $(plugin::source_targets)
+        cp -R "${ROOT}/build/"* "${ROOT}/go/build/"
     - name: Publish to Registry
       uses: elgohr/Publish-Docker-Github-Action@master
       env:
@@ -29,5 +29,5 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
         cache: false
-        workdir: "build"
+        workdir: "go/build"
         buildargs: "version,commit,base_img"
