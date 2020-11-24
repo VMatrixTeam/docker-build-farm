@@ -27,8 +27,8 @@ jobs:
         ref: 19a87c5b12c4f41e4add16c0f5e426751af4b46a
     - name: Prepare
       run: |
-          source hack/common.sh
-          ROOT=$(cd $(dirname ${BASH_SOURCE[0]})/.. && pwd -P)
+          ROOT=$(pwd -P)
+          source "${ROOT}/hack/common.sh"
           mkdir -p "${ROOT}/go/build"
           tar czf "${ROOT}/go/build/gpu-manager-source.tar.gz" --transform 's,^,/gpu-manager-'${version}'/,' $(plugin::source_targets)
           cp -R "${ROOT}/build/"* "${ROOT}/go/build/"
