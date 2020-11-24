@@ -37,6 +37,5 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
         cache: false
-        dockerfile: "build/Dockerfile"
         workdir: "build"
         buildargs: "version,commit,base_img"
