@@ -1,4 +1,4 @@
-FROM gcc:11.2-bullseye
+FROM debian:bullseye
 ENV LC_ALL=C
 RUN useradd -U -m -s /bin/sh judge
 RUN apt update
