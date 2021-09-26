@@ -1,8 +1,8 @@
 name: Build judge-env-aio
 on: 
-  workflow_dispatch:
+  push: ["master"]
 jobs:
-  pxc-operator-proxysql:
+  judge-env-aio:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
