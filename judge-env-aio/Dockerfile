@@ -9,4 +9,4 @@ RUN rm -rf /var/log/*
 RUN rm -rf /var/cache/*
 RUN cd /usr/src/gtest && cmake . && make && cp ./lib/*.a /usr/lib
 RUN pip3 install xmltodict
-RUN curl -fsSL https://github.com/oclint/oclint/releases/download/v21.05/oclint-21.05-llvm-12.0.0-x86_64-linux-ubuntu-20.04.tar.gz | tar -C /tmp -xzvf && rm /tmp/oclint-21.05/LICENSE && cp -r /tmp/oclint-21.05/* /usr && rm -rf /tmp/oclint-21.05
+RUN curl -fsSL https://github.com/oclint/oclint/releases/download/v21.05/oclint-21.05-llvm-12.0.0-x86_64-linux-ubuntu-20.04.tar.gz | tar -C /tmp -xz && rm /tmp/oclint-21.05/LICENSE && cp -r /tmp/oclint-21.05/* /usr && rm -rf /tmp/oclint-21.05
