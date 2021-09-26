@@ -1,6 +1,5 @@
 name: Build judge-env-aio
-on: 
-  push: ["master"]
+on: ["push"]
 jobs:
   judge-env-aio:
     runs-on: ubuntu-latest
