@@ -2,7 +2,7 @@ FROM debian:bullseye
 ENV LC_ALL=C
 RUN useradd -U -m -s /bin/sh judge
 RUN apt update
-RUN apt install -y software-properties-common cabal-install ghc curl make librabbitmq-dev libcurl4-openssl-dev golang golint nodejs lua5.3 rustc xz-utils default-jdk-headless pypy pypy3 pylint python3 python3-pip pylint3 clang libclang-dev ruby scala libboost-all-dev cmake libgtest-dev gnat gcc g++ gfortran gcc-multilib g++-multilib libsqlite3-dev libpq-dev fp-compiler valgrind locales libseccomp-dev libcgroup-dev libmariadb-dev libmariadb-dev-compat
+RUN apt install -y software-properties-common cabal-install ghc curl make libcurl4-openssl-dev golang golint nodejs lua5.3 rustc cargo xz-utils default-jdk-headless pypy pypy3 pylint python3 python3-pip pylint3 clang libclang-dev ruby scala libboost-all-dev cmake libgtest-dev gnat gcc g++ gfortran gcc-multilib g++-multilib libsqlite3-dev libpq-dev fp-compiler valgrind locales
 RUN apt-get autoremove --purge && apt-get clean
 RUN rm -rf /var/lib/apt/lists/*
 RUN rm -rf /var/log/*
