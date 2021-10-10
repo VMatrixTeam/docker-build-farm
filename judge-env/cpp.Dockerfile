@@ -2,7 +2,7 @@ FROM debian:bullseye
 ENV LC_ALL=C
 RUN useradd -U -m -s /bin/sh judge
 RUN apt update
-RUN apt install -y software-properties-common make libcurl4-openssl-dev xz-utils clang libclang-dev libboost-all-dev cmake libgtest-dev gcc g++ gcc-multilib g++-multilib libsqlite3-dev libpq-dev valgrind locales python3 python3-pip
+RUN apt install -y software-properties-common make curl libcurl4-openssl-dev xz-utils clang libclang-dev libboost-all-dev cmake libgtest-dev gcc g++ gcc-multilib g++-multilib libsqlite3-dev libpq-dev valgrind locales python3 python3-pip
 RUN apt-get autoremove --purge && apt-get clean && rm -rf /var/lib/apt/lists/* && rm -rf /var/log/* && rm -rf /var/cache/*
 RUN cd /usr/src/gtest && cmake . && make && cp ./lib/*.a /usr/lib
 RUN pip3 install xmltodict
