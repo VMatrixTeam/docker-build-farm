@@ -9,7 +9,7 @@ jobs:
     - name: Download proxysql-admin
       run: "wget https://raw.githubusercontent.com/percona/proxysql-admin-tool/v2.0/proxysql-admin && chmod 775 proxysql-admin"
     - name: Publish to Registry
-      uses: elgohr/Publish-Docker-Github-Action@master
+      uses: elgohr/Publish-Docker-Github-Action@v5
       with:
         name: vmatrixdev/percona-xtradb-cluster-operator
         tags: "1.5.0-proxysql"
